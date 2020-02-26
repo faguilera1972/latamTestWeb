@@ -35,6 +35,11 @@ public class PersonaController {
         personaInModel.setFechaNac(DateUtils.dateToString(fechaNaci,"dd-MM-yyyy"));
 
         PersonaOutModel personaOutModel = personaService.ingresaPersona(personaInModel);
+        if(personaOutModel.getPoemaModel()!=null){
+            personaOutModel.setPoema(personaOutModel.getPoemaModel().getContent());
+        }else{
+            personaOutModel.setPoema("---");
+        }
         List<PersonaOutModel> personas ;
 
         if(session.getAttribute("personas") !=null){
@@ -51,4 +56,6 @@ public class PersonaController {
         return "personas";
 
     }
+
+
 }

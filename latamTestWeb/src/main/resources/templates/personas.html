@@ -2,15 +2,21 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>Personas</title>
 </head>
 <body>
+<div class="jumbotron text-center">
+    <h2>Ingreso de Personas</h2>
+</div>
 
-
-<div th:if="${listaPersonas != null}">
+<div class="container" th:if="${listaPersonas != null}">
     <h1>Personas</h1>
 
-    <table>
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>Nombre</th>
@@ -25,26 +31,57 @@
                 <td th:text="${persona.nombre}"/>
                 <td th:text="${persona.apellido}"/>
                 <td th:text="${persona.fechaNac}"/>
-                <td th:if="${persona.diasCumple > 0}"><span th:text="${persona.diasCumple}"></span></td>
-                <td th:unless="${persona.diasCumple == 0}"><span th:text="${persona.poemaModel.content}"></span></td>
+                <td th:text="${persona.diasCumple}"/>
+                <td th:text="${persona.poema}"/>
             </tr>
         </tbody>
     </table>
 
     <hr>
 </div>
-    <h1>Ingreso Personas</h1>
+    <h1>Formulario Personas</h1>
 
     <hr>
-    <form action="#" th:action="@{/persona/ingreso}" th:object="${personaIn}" method="post">
+    <form class="form-horizontal" action="#" th:action="@{/persona/ingreso}" th:object="${personaIn}" method="post">
 
-        <p>Primer Nombre <input type="text" th:field="*{primerNombre}"></p>
-        <p>Segundo Nombre <input type="text" th:field="*{segundoNombre}"></p>
-        <p>Apellido Paterno <input type="text" th:field="*{apellidoPat}"></p>
-        <p>Apellido Materno <input type="text" th:field="*{apellidoMat}"></p>
-        <p>Fecha Nac <input type="date"  th:field="*{fechaNac}"></p>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="primerNombre">Primer Nombre</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" th:field="*{primerNombre}" id="primerNombre" placeholder="Primer Nombre">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="segundoNombre">Segundo Nombre</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" th:field="*{segundoNombre}" id="segundoNombre" placeholder="Segundo Nombre">
+            </div>
+        </div>
 
-        <p><input type="submit" value="Guardar"> <input type="reset" value="Reset"></p>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="apellidoPat">Apellido Paterno</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" th:field="*{apellidoPat}" id="apellidoPat" placeholder="Apellido Paterno">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="apellidoMat">Apellido Materno</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" th:field="*{apellidoMat}" id="apellidoMat" placeholder="Apellido Materno">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="fechaNac">Fecha Nac.</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" th:field="*{fechaNac}" id="fechaNac" placeholder="Fecha Nac.">
+            </div>
+        </div>
+
+
+
+
+        <input type="submit" class="btn" value="Guardar"> <input type="reset" class="btn" value="Reset"></p>
 
     </form>
     <hr>

@@ -52,6 +52,7 @@ public class PersonaController {
         }
 
         model.addAttribute("listaPersonas",personas);
+        model.addAttribute("personaIn", new PersonaInModel());
 
         return "personas";
 

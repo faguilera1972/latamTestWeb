@@ -8,12 +8,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#panelPoema").hide();
-
-        });
-    </script>
 
 </head>
 
@@ -50,7 +44,6 @@
                     <button type="button" class="btn btn-primary btn-xs" th:title="${persona.poema}">Poema</button>
                  </td>
                 <td th:unless="${persona.diasCumple == 0}" th:text="${persona.poema}"/>
-
 
             </tr>
         </tbody>

@@ -4,9 +4,16 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <title>Personas</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+
+
+</head>
+
+
+<title>Personas</title>
 </head>
 <body>
 <div class="jumbotron text-center">
@@ -24,6 +31,7 @@
                 <th>Fecha</th>
                 <th>Edad</th>
                 <th>D&iacute;as Cumple</th>
+                <th>Poema</th>
             </tr>
         </thead>
         <tbody>
@@ -31,6 +39,7 @@
                 <td th:text="${persona.nombre}"/>
                 <td th:text="${persona.apellido}"/>
                 <td th:text="${persona.fechaNac}"/>
+                <td th:text="${persona.edad}"/>
                 <td th:text="${persona.diasCumple}"/>
                 <td th:text="${persona.poema}"/>
             </tr>
@@ -39,7 +48,10 @@
 
     <hr>
 </div>
-    <h1>Formulario Personas</h1>
+<div class="container">
+<div class="panel panel-default">
+    <div class="panel-heading">Formulario Personas</div>
+    <div class="panel-body">
 
     <hr>
     <form class="form-horizontal" action="#" th:action="@{/persona/ingreso}" th:object="${personaIn}" method="post">
@@ -47,7 +59,7 @@
         <div class="form-group">
             <label class="control-label col-sm-2" for="primerNombre">Primer Nombre</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" th:field="*{primerNombre}" id="primerNombre" placeholder="Primer Nombre">
+                <input type="text" class="form-control" size="200" th:field="*{primerNombre}" id="primerNombre" placeholder="Primer Nombre">
             </div>
         </div>
         <div class="form-group">
@@ -74,17 +86,26 @@
         <div class="form-group">
             <label class="control-label col-sm-2" for="fechaNac">Fecha Nac.</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" th:field="*{fechaNac}" id="fechaNac" placeholder="Fecha Nac.">
+                <div class="input-group date" data-provide="datepicker">
+                    <input type="date" class="form-control" th:field="*{fechaNac}" id="fechaNac" placeholder="Fecha Nac.">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </div>
+                </div>
             </div>
         </div>
 
 
 
 
-        <input type="submit" class="btn" value="Guardar"> <input type="reset" class="btn" value="Reset"></p>
+        <input type="submit" class="btn btn-primary btn-block" value="Guardar">
 
     </form>
-    <hr>
+    </div>
+    </div>
+</div>
 
 </body>
+
+
 </html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Personas</title>
+</head>
+<body>
+
+
+<div th:if="${listaPersonas != null}">
+    <h1>Personas</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Fecha</th>
+                <th>Edad</th>
+                <th>D&iacute;as Cumple</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="persona : ${listaPersonas}">
+                <td th:text="${persona.nombre}"/>
+                <td th:text="${persona.apellido}"/>
+                <td th:text="${persona.fechaNac}"/>
+                <td th:if="${persona.diasCumple > 0}"><span th:text="${persona.diasCumple}"></span></td>
+                <td th:unless="${persona.diasCumple == 0}"><span th:text="${persona.poemaModel.content}"></span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+</div>
+    <h1>Ingreso Personas</h1>
+
+    <hr>
+    <form action="#" th:action="@{/persona/ingreso}" th:object="${personaIn}" method="post">
+
+        <p>Primer Nombre <input type="text" th:field="*{primerNombre}"></p>
+        <p>Segundo Nombre <input type="text" th:field="*{segundoNombre}"></p>
+        <p>Apellido Paterno <input type="text" th:field="*{apellidoPat}"></p>
+        <p>Apellido Materno <input type="text" th:field="*{apellidoMat}"></p>
+        <p>Fecha Nac <input type="date"  th:field="*{fechaNac}"></p>
+
+        <p><input type="submit" value="Guardar"> <input type="reset" value="Reset"></p>
+
+    </form>
+    <hr>
+
+</body>
+</html>
